@@ -1,0 +1,486 @@
+<game_config>
+  <game_key>dnl_win64</game_key>
+  <protocol>lgsl</protocol>
+  <lgsl_query_name>dnl</lgsl_query_name>
+  <installer>steamcmd</installer>
+  <game_name>Dark and Light</game_name>
+  <server_exec_name>DNLServer.exe</server_exec_name>
+  <cli_template>%MAP%?listen%IP%%PORT%%QUERY_PORT%%PLAYERS%%RCON%%CONTROL_PASSWORD%%SRVPASS%%SPETPASS%%ASPMS%%KIPP%%ASDN%%PDS%%PDI%%PDD%%PUS%%PUI%%PUD%%NPDIS%%OADCS%%ODUCS%%OSPP%%PDISE%%ACBP%%ADMLOG%%FASL%%ADOSM%%RSGLB%%AABIC%%ACSTOS%%AFCPVE%%AFSR%%AMAC4%%ADDD%%BALULMR%%BAIS%%BAPIMMIS%%CIST%%DUWP%%DIDB%%EESPV%%FDUCS%%FFE%%BALPSMF%%MTDIN%%MPTD%%MDRI%%OVRSSSM%%POP%%POPI%%PSA%%PVEASASD%%PVPDD%%PVPSD%%SFDT%%TMSIR%%TLDES%%SAFRWDI%%PTDSSC%%PTA%%ARDF%%AHM%%SCRHIR%%PMB%%OVROFDIF%%DIFOF%%MAPID%%GAMID% %AMM% %NTFF% %CDO% %CID% %EXJOIN% %FACF% %FRD% %IDPCK% %PHIBER% %INSEC% %NBTLEY% %UBTLEY% %NBWLS% %NCCM% %NFL% %NISL% %NACIC% %LWMEM% -useallavailablecores -usecache -nosteamclient -game -server -log</cli_template>
+  <cli_params>
+    <cli_param id="MAP" cli_string="" />
+    <cli_param id="IP" cli_string="?Multihome=" />
+    <cli_param id="PORT" cli_string="?Port=" />
+    <cli_param id="PLAYERS" cli_string="?MaxPlayers=" />
+    <cli_param id="CONTROL_PASSWORD" cli_string="?ServerAdminPassword=" />
+  </cli_params>
+  <reserve_ports>
+    <port type="add" id="QUERY_PORT" cli_string="?QueryPort=">19238</port>
+  </reserve_ports>
+  <map_list>maplist.txt</map_list>
+  <console_log>DNL/Saved/Logs/DNL.log</console_log>
+  <exe_location>DNL/Binaries/Win64</exe_location>
+  <max_user_amount>255</max_user_amount>
+  <mods>
+    <mod key="default">
+      <name>None</name>
+      <installer_name>630230</installer_name>
+      <installer_login>anonymous</installer_login>
+    </mod>
+  </mods>
+  <replace_texts>
+    <text key="home_name">
+      <default>SessionName=.*</default>
+      <var>SessionName=</var>
+      <filepath>DNL/Saved/Config/WindowsServer/GameUserSettings.ini</filepath>
+    </text>
+  </replace_texts>
+  <server_params>
+    <param key="?RCONEnabled=" type="select" id="RCON">
+      <option value="True">True</option>
+      <option value="False">False</option>
+      <options>ns</options>
+      <desc>Enable or disable remote control.</desc>
+    </param>
+    <param key="?ServerPassword=" type="text" id="SRVPASS">
+      <options>ns</options>
+      <desc>If specified, players must provide this password to join the server.</desc>
+    </param>
+    <param key="?SpectatorPassword=" type="text" id="SPETPASS">
+      <options>ns</options>
+      <desc>To use non-admin spectator, the server must specify a spectator password. Then any client can use these console commands: requestspectator and stopspectating. See patch 191.0 for more information and hotkeys.</desc>
+    </param>
+    <param key="?AutoSavePeriodMinutes=" type="text" id="ASPMS">
+      <default>30</default>
+      <options>ns</options>
+      <desc>Specifie the save period minutes.</desc>
+    </param>
+    <param key="?KickIdlePlayersPeriod=" type="text" id="KIPP">
+      <default>2400</default>
+      <options>ns</options>
+      <desc>Time after which characters that have not moved or interacted will be kicked (if -EnableIdlePlayerKick as command line parameter is set).</desc>
+    </param>
+    <param key="?AltSaveDirectoryName=" type="text" id="ASDN">
+      <options>ns</options>
+      <desc>Name of the save folder.</desc>
+    </param>
+    <param key="?MapModID=" type="text" id="MAPID">
+      <options>ns</options>
+      <desc>Add your map mod id. Example: 804312798</desc>
+    </param>
+    <param key="?GameModIds=" type="text" id="GAMID">
+      <options>ns</options>
+      <desc>Add your Game mods ids. Example: 1271938806,764755314,564895376</desc>
+    </param>
+    <param key="?OverrideOfficialDifficulty=" type="text" id="OVROFDIF">
+      <default>0.0</default>
+      <options>ns</options>
+      <desc>Override Official Difficulty Offset!</desc>
+    </param>
+    <param key="?DifficultyOffset=" type="text" id="DIFOF">
+      <default>1.0</default>
+      <options>ns</options>
+      <desc>Change Difficulty Offset!</desc>
+    </param>
+    <param key="?PreventOfflinePvP=" type="select" id="POP">
+      <option value="True">True</option>
+      <option value="False">False</option>
+      <options>ns</options>
+      <desc>Use this to enable the offline raiding prevention option.</desc>
+    </param>
+    <param key="?PreventOfflinePvPInterval=" type="text" id="POPI">
+      <default>900</default>
+      <options>ns</options>
+      <desc>Time in seconds to wait before a tribe/players dinos/structures become invulnerable/inactive after they log off. If tribe, requires ALL tribe members logged off!</desc>
+    </param>
+    <param key="?PreventSpawnAnimations=" type="select" id="PSA">
+      <option value="False">False</option>
+      <option value="True">True</option>
+      <options>ns</options>
+      <desc>Setting to true lets player characters (re)spawn without the wake up animation.</desc>
+    </param>
+    <param key="?PvEAllowStructuresAtSupplyDrops=" type="select" id="PVEASASD">
+      <option value="False">False</option>
+      <option value="True">True</option>
+      <options>ns</options>
+      <desc>Set to true to allow building near supply drop points in PvE mode.</desc>
+    </param>
+    <param key="?PvEDinoDecayPeriodMultiplier=" type="text" id="PVEDDPM">
+      <default>1.0</default>
+      <options>ns</options>
+      <desc>Dino PvE Auto-Claim time multiplier.</desc>
+    </param>
+    <param key="?PvPDinoDecay=" type="select" id="PVPDD">
+      <option value="False">False</option>
+      <option value="True">True</option>
+      <options>ns</options>
+      <desc>Set to true to prevent dinosaurs from decaying while the Offline Raiding Prevention is active.</desc>
+    </param>
+    <param key="?PvPStructureDecay=" type="select" id="PVPSD">
+      <option value="False">False</option>
+      <option value="True">True</option>
+      <options>ns</options>
+      <desc>Set to true to prevent structure from decaying while the Offline Raiding Prevention is active.</desc>
+    </param>
+    <param key="?ShowFloatingDamageText=" type="select" id="SFDT">
+      <option value="False">False</option>
+      <option value="True">True</option>
+      <options>ns</options>
+      <desc>Use this to enable RPG-style popup text stat mode.</desc>
+    </param>
+    <param key="?TheMaxStructuresInRange=" type="text" id="TMSIR">
+      <default>10500</default>
+      <options>ns</options>
+      <desc>new value for maximum allowed structures on a server. replaced NewMaxStructuresInRange.</desc>
+    </param>
+    <param key="?TribeLogDestroyedEnemyStructures=" type="select" id="TLDES">
+      <option value="False">False</option>
+      <option value="True">True</option>
+      <options>ns</options>
+      <desc>By default enemy structure destruction (for the victim tribe) is not displayed in the tribe Logs, set this to true to enable it.</desc>
+    </param>
+    <param key="?ServerAutoForceRespawnWildDinosInterval=" type="text" id="SAFRWDI">
+      <default>604800</default>
+      <options>ns</options>
+      <desc>Force Respawn of Wild Dinos on Server Restart. Enabled by default on official servers, this will force weekly respawns of dinos on all servers to prevent certain dino types (like the Basilo and Spino) from becoming depopulated on long running servers. NOTE in some cases this may not work more than once.</desc>
+    </param>
+    <param key="?PersonalTamedDinosSaddleStructureCost=" type="text" id="PTDSSC">
+      <default>19</default>
+      <options>ns</options>
+      <desc>Determines the amount of dinoslots a platform saddle will use towards the tribe dino limit.</desc>
+    </param>
+    <param key="?PreventTribeAlliances=" type="select" id="PTA">
+      <option value="False">False</option>
+      <option value="True">True</option>
+      <options>ns</options>
+      <desc>Enable or disable tribe alliances.</desc>
+    </param>
+    <param key="?AllowRaidDinoFeeding=" type="select" id="ARDF">
+      <option value="False">False</option>
+      <option value="True">True</option>
+      <options>ns</options>
+      <desc>To allow your Server's Titanosaurs to be permanently tamed (namely allow them to be Fed) However, note that TheIsland currently only spawns 3 Titanosaurs whatsoever, so 3 Tamed ones would ultimately block any more Wild ones from spawning.</desc>
+    </param>
+    <param key="?AllowHitMarkers=" type="select" id="AHM">
+      <option value="True">True</option>
+      <option value="False">False</option>
+      <options>ns</options>
+      <desc>Use this to disable optional hitmarkers for ranged attacks.</desc>
+    </param>
+    <param key="?ServerCrosshair=" type="select" id="SCRHIR">
+      <option value="True">True</option>
+      <option value="False">False</option>
+      <options>ns</options>
+      <desc>Use this to disable the Crosshair on your Server.</desc>
+    </param>
+    <param key="?PreventMateBoost=" type="select" id="PMB">
+      <option value="False">False</option>
+      <option value="True">True</option>
+      <options>ns</options>
+      <desc>Option to disable Dino Mate Boost.</desc>
+    </param>
+    <param key="?PreventDownloadSurvivors=" type="select" id="PDS">
+      <option value="True">True</option>
+      <option value="False">False</option>
+      <options>ns</options>
+      <desc>Enable or disable downloading characters from Cluster to this server.</desc>
+    </param>
+    <param key="?PreventDownloadItems=" type="select" id="PDI">
+      <option value="True">True</option>
+      <option value="False">False</option>
+      <options>ns</options>
+      <desc>Enable or disable downloading items from Cluster to this server.</desc>
+    </param>
+    <param key="?PreventDownloadDinos=" type="select" id="PDD">
+      <option value="True">True</option>
+      <option value="False">False</option>
+      <options>ns</options>
+      <desc>Enable or disable downloading tamed dinos from Cluster to this server.</desc>
+    </param>
+    <param key="?PreventUploadSurvivors=" type="select" id="PUS">
+      <option value="True">True</option>
+      <option value="False">False</option>
+      <options>ns</options>
+      <desc>Enable or disable uploading characters from this server to Cluster.</desc>
+    </param>
+    <param key="?PreventUploadItems=" type="select" id="PUI">
+      <option value="True">True</option>
+      <option value="False">False</option>
+      <options>ns</options>
+      <desc>Enable or disable uploading items from this server to Cluster.</desc>
+    </param>
+    <param key="?PreventUploadDinos=" type="select" id="PUD">
+      <option value="True">True</option>
+      <option value="False">False</option>
+      <options>ns</options>
+      <desc>Enable or disable uploading tamed dinos from this server to Cluster.</desc>
+    </param>
+    <param key="?NonPermanentDiseases=" type="select" id="NPDIS">
+      <option value="True">True</option>
+      <option value="False">False</option>
+      <options>ns</options>
+      <desc>This will make Diseases not permanent (you will then lose them if you respawn)</desc>
+    </param>
+    <param key="?OnlyAutoDestroyCoreStructures=" type="select" id="OADCS">
+      <option value="True">True</option>
+      <option value="False">False</option>
+      <options>ns</options>
+      <desc>You can launch an autodestroy enabled server with this opion to prevent any non-core/non-foundation structures from autodestroying (however they'll still get autodestroyed if a floor that they're on gets autodestroyed, of course). Official PvE Servers use this option.</desc>
+    </param>
+    <param key="?OnlyDecayUnsnappedCoreStructures=" type="select" id="ODUCS">
+      <option value="True">True</option>
+      <option value="False">False</option>
+      <options>ns</options>
+      <desc>If set, only unsnapped core structures will decay. Useful for eliminating lone pillar/foundation spam on PvP Servers.</desc>
+    </param>
+    <param key="?OverrideStructurePlatformPrevention=" type="select" id="OSPP">
+      <option value="False">False</option>
+      <option value="True">True</option>
+      <options>ns</options>
+      <desc>Use this override if you want turret or spike structures to be buildable and functional on platform saddles.</desc>
+    </param>
+    <param key="?PreventDiseases=" type="select" id="PDISE">
+      <option value="False">False</option>
+      <option value="True">True</option>
+      <options>ns</options>
+      <desc>This will completely disable Diseases on the server. (thus far just 'Swamp Fever').</desc>
+    </param>
+    <param key="?AllowCaveBuildingPVE=" type="select" id="ACBP">
+      <option value="False">False</option>
+      <option value="True">True</option>
+      <options>ns</options>
+      <desc>If set to True, allows building in caves when PvE mode is also enabled.</desc>
+    </param>
+    <param key="?AdminLogging=" type="select" id="ADMLOG">
+      <option value="False">False</option>
+      <option value="True">True</option>
+      <options>ns</options>
+      <desc>logs all admin commands to ingame chat.</desc>
+    </param>
+    <param key="?ForceAllStructureLocking=" type="select" id="FASL">
+      <option value="False">False</option>
+      <option value="True">True</option>
+      <options>ns</options>
+      <desc>Enabling this will default lock all structures.</desc>
+    </param>
+    <param key="?AutoDestroyOldStructuresMultiplier=" type="text" id="ADOSM">
+      <default>1.0</default>
+      <options>ns</options>
+      <desc>Server Option to allow Auto-Destroying Structures after sufficient "no nearby Tribe" time has passed (defined as a multiplier of the Allow Claim period). Useful for servers to clear off abandoned structures automatically over time if they wish.</desc>
+    </param>
+    <param key="?RCONServerGameLogBuffer=" type="text" id="RSGLB">
+      <default>600</default>
+      <options>ns</options>
+      <desc>determines how many lines of gamelogs are send over RCON.</desc>
+    </param>
+    <param key="?AllowAnyoneBabyImprintCuddle=" type="select" id="AABIC">
+      <option value="False">False</option>
+      <option value="True">True</option>
+      <options>ns</options>
+      <desc>Use this if you want ANYONE to be able to "take care" of a Baby Dino (cuddle etc.), not just whomever Imprinted on it.</desc>
+    </param>
+    <param key="?AllowCrateSpawnsOnTopOfStructures=" type="select" id="ACSTOS">
+      <option value="False">False</option>
+      <option value="True">True</option>
+      <options>ns</options>
+      <desc>Servers can now allow from-the-air Supply Crates to appear on top of Structures, rather than being prevented by Structures.</desc>
+    </param>
+    <param key="?AllowFlyerCarryPVE=" type="select" id="AFCPVE">
+      <option value="False">False</option>
+      <option value="True">True</option>
+      <options>ns</options>
+      <desc>Permit flying dinosaurs to pick up other dinosaurs and players when mounted by a player in PvE Introduced in patch 173.0 but changed from bAllowFlyerCarryPVE to AllowFlyerCarryPVE</desc>
+    </param>
+    <param key="?AllowFlyingStaminaRecovery=" type="select" id="AFSR">
+      <option value="False">False</option>
+      <option value="True">True</option>
+      <options>ns</options>
+      <desc>Set to true if flyers should recover stamina when player is standing on instead riding.</desc>
+    </param>
+    <param key="?AllowMultipleAttachedC4=" type="select" id="AMAC4">
+      <option value="False">False</option>
+      <option value="True">True</option>
+      <options>ns</options>
+      <desc>Set to true to allow to attach more than one C4 per dino.</desc>
+    </param>
+    <param key="?AutoDestroyDecayedDinos=" type="select" id="ADDD">
+      <option value="False">False</option>
+      <option value="True">True</option>
+      <options>ns</options>
+      <desc>Auto-destroy claimable decayed dinos on load, rather than have them remain around as Claimable.</desc>
+    </param>
+    <param key="?bAllowUnlimitedRespecs=" type="select" id="BALULMR">
+      <option value="False">False</option>
+      <option value="True">True</option>
+      <options>ns</options>
+      <desc>Set to true to allow more than one usage of Mindwipe Tonic per level.</desc>
+    </param>
+    <param key="?bAppendItemSets=" type="select" id="BAIS">
+      <option value="False">False</option>
+      <option value="True">True</option>
+      <options>ns</options>
+      <desc>Set to true to add item sets to supply crates, rather than overriding all their items. See ConfigOverrideSupplyCrateItems.</desc>
+    </param>
+    <param key="?bAppendPreventIncreasingMinMaxItemSets=" type="select" id="BAPIMMIS">
+      <option value="False">False</option>
+      <option value="True">True</option>
+      <options>ns</options>
+      <desc>Set to true to dynamically increase the amount of items dropped. See ConfigOverrideSupplyCrateItems.</desc>
+    </param>
+    <param key="?ClampItemSpoilingTimes=" type="select" id="CIST">
+      <option value="False">False</option>
+      <option value="True">True</option>
+      <options>ns</options>
+      <desc>Will clamp all spoiling times to the items' maximum spoiling times. Could potentially cause issues with Mods that alter spoiling time.</desc>
+    </param>
+    <param key="?DestroyUnconnectedWaterPipes=" type="select" id="DUWP">
+      <option value="False">False</option>
+      <option value="True">True</option>
+      <options>ns</options>
+      <desc>After two days real-time the pipes will auto-destroy if unconnected to any non-pipe (directly or indirectly) and no allied player is nearby.</desc>
+    </param>
+    <param key="?DisableImprintDinoBuff=" type="select" id="DIDB">
+      <option value="False">False</option>
+      <option value="True">True</option>
+      <options>ns</options>
+      <desc>Use this to disable the Dino Imprinting-Player Stat Bonus, if you don't like it (where whomever specifically imprinted on the Dino, and Raised it to have an Imprinting Quality, gets extra Damage/Resistance buff)</desc>
+    </param>
+    <param key="?EnableExtraStructurePreventionVolumes=" type="select" id="EESPV">
+      <option value="False">False</option>
+      <option value="True">True</option>
+      <options>ns</options>
+      <desc>Use this to completely disable building in specific resource-rich areas, in particular setup on TheIsland around the major mountains.</desc>
+    </param>
+    <param key="?FastDecayUnsnappedCoreStructures=" type="select" id="FDUCS">
+      <option value="False">False</option>
+      <option value="True">True</option>
+      <options>ns</options>
+      <desc>Will decay unsnapped foundations/pillars at 5x speed.</desc>
+    </param>
+    <param key="?ForceFlyerExplosives=" type="select" id="FFE">
+      <option value="False">False</option>
+      <option value="True">True</option>
+      <options>ns</options>
+      <desc>Flyer (except Quetzal and Wyvern can't fly with C4 attached to it. Set this parameter to true to let them still fly.</desc>
+    </param>
+    <param key="?bAllowPlatformSaddleMultiFloors=" type="select" id="BALPSMF">
+      <option value="False">False</option>
+      <option value="True">True</option>
+      <options>ns</options>
+      <desc>Set to true to allow allow multiple platform floors.</desc>
+    </param>
+    <param key="?MaxTamedDinos=" type="text" id="MTDIN">
+      <default>4000</default>
+      <options>ns</options>
+      <desc>Sets the maximum number of tamed Dinos on a Server, this is a global cap.</desc>
+    </param>
+    <param key="?MaxPersonalTamedDinos=" type="text" id="MPTD">
+      <default>500</default>
+      <options>ns</options>
+      <desc>Activates a per-tribe dino tame limit. (500 on official servers).</desc>
+    </param>
+    <param key="?MinimumDinoReuploadInterval=" type="text" id="MDRI">
+      <default>0</default>
+      <options>ns</options>
+      <desc>Number of seconds cooldown between allowed Dino re-uploads (defaults to 0, set to 43200 on Official Servers which is 12 hours).</desc>
+    </param>
+    <param key="?OxygenSwimSpeedStatMultiplier=" type="text" id="OVRSSSM">
+      <default>1.0</default>
+      <options>ns</options>
+      <desc>Use this to set how swim speed is multiplied by level spent in oxygen. The value was reduced by 80% in 256.0</desc>
+    </param>
+    <param key="-lowmemory" type="checkbox_key_value" id="LWMEM">
+      <desc>Launch options that reduces graphics and audio effects to save about 800 MB RAM, likely enabling 4GB RAM players to get past infinite-loading screens.</desc>
+    </param>
+    <param key="-automanagedmods" type="checkbox_key_value" id="AMM">
+      <desc>Enable automatic MOD downloading, installing and updating.</desc>
+    </param>
+    <param key="-servergamelog" type="checkbox_key_value">
+      <desc>Enable server admin logs.</desc>
+    </param>
+    <param key="-gameplaylogging" type="checkbox_key_value">
+      <desc>Log file will contain a timestamped kills and winners log listing Steam ID, Steam name, character name, etc.</desc>
+    </param>
+    <param key="-ForceAllowCaveFlyers" type="checkbox_key_value" id="FACF">
+      <desc>Force flyer dinos to be allowed into caves (Flyers able to go into caves by default on custom maps).</desc>
+    </param>
+    <param key="-ForceRespawnDinos" type="checkbox_key_value" id="FRD">
+      <desc>Launch with this command to destroy all wild creatures on a startup. (this will only destroy wild creatures that are NOT currently being tamed).</desc>
+    </param>
+    <param key="-EnableIdlePlayerKick" type="checkbox_key_value" id="IDPCK">
+      <desc>Force idle player kick.</desc>
+    </param>
+    <param key="-PreventHibernation" type="checkbox_key_value" id="PHIBER">
+      <desc>Force idle player kick.</desc>
+    </param>
+    <param key="-insecure" type="checkbox_key_value" id="INSEC">
+      <desc>Disable Valve Anti-Cheat (VAC) system.</desc>
+    </param>
+    <param key="-NoBattlEye" type="checkbox_key_value" id="NBTLEY">
+      <desc>Run server without BattleEye.</desc>
+    </param>
+    <param key="-UseBattleye" type="checkbox_key_value" id="UBTLEY">
+      <desc>Run server with BattleEye enabled.</desc>
+    </param>
+    <param key="-NoBiomeWalls" type="checkbox_key_value" id="NBWLS">
+      <desc>Eliminates the upcoming-Biome-change area wall effects as introduced in an unversioned addition of v241.5.</desc>
+    </param>
+    <param key="-nocombineclientmoves" type="checkbox_key_value" id="NCCM">
+      <desc>Server player-move-physics optimization is now enabled by default (improves perf) to disable it, use this server commandline.</desc>
+    </param>
+    <param key="-nofishloot" type="checkbox_key_value" id="NFL">
+      <desc>disable non-meat Fish Loot when using Fishing Rod.</desc>
+    </param>
+    <param key="-noninlinesaveload" type="checkbox_key_value" id="NISL">
+      <desc>Fixed a savegame corruption case with large savegames this is experimental, so try with this command, if you have any saves that don t load. We ll formally roll this loader change out in a subsequent patch after we re 100 certain it has no side effects.</desc>
+    </param>
+    <param key="-NotifyAdminCommandsInChat" type="checkbox_key_value" id="NACIC">
+      <desc>This notify chat about admin commands.</desc>
+    </param>
+    <param key="-NoTransferFromFiltering" type="checkbox_key_value" id="NTFF">
+      <desc>Cross-ARK Data Transfer protection against other servers that use different Cluster IDs. If you set this, players from unknown servers will not able to transfer datas to your Cluster.</desc>
+    </param>
+    <param key="-clusterid=" type="text" id="CID">
+      <options>ns</options>
+      <desc>Unique identifier of your Cluster.</desc>
+    </param>
+    <param key="-ClusterDirOverride=" type="other_game_server_path_additional" id="CDO">
+      <default>DNL/Saved</default>
+      <options>ns</options>
+      <desc>Specify a common cross-server storage location that functions between multiple servers running on the same machine.</desc>
+    </param>
+    <param key="-exclusivejoin" type="checkbox_key_value" id="EXJOIN">
+      <desc>Activate a whitelist only mode on the server that only lets players join if added to the allow list. Not to be confused with "Admin Whitelisting" which uses "AllowedCheaterSteamIDs.txt" to allow players to cheat. This option uses "PlayersJoinNoCheckList.txt" to allow people to join but not give them cheats. If the file does not exist in your Linux/Win64 Binaries folder, create it and add the Steam64 IDs of the players you wish to be allowed to join your server. Path; "\ShooterGame\Binaries\Win64\" "/ShooterGame/Binaries/Linux/". You will need to restart your server, if you add new lines to the file while it is running. You can however use "Cheat AllowPlayerToJoinNoCheck 12345678901234567" in game, to add a new player to the whitelist. This method will also save to the file, so you don't need to reboot the server.</desc>
+    </param>
+    <param key="-ClearOldItems" type="checkbox_key_value" id="COI">
+      <desc>Official PvP servers one-time Clearance of all old unequipped items (with the exception of blueprints, eatables, notes, and quest items), to ensure fairness after Item Duplication bug exploit. Server admins can enforce this once if they run with this command argument (will only work ONCE' on pre-update save games).</desc>
+    </param>
+  </server_params>
+  <custom_fields>
+    <field key="RCON Port" type="text">
+      <default>RCONPort=.*</default>
+      <default_value>37777</default_value>
+      <var>RCONPort=</var>
+      <filepath>DNL/Saved/Config/WindowsServer/GameUserSettings.ini</filepath>
+      <options>sq</options>
+      <access>admin</access>
+      <desc>Port of remote control.</desc>
+    </field>
+  </custom_fields>
+  <post_install>
+    maplist="maplist.txt"
+    if [ -s "$maplist" ]
+      then
+        echo "File $maplist found. OK!"
+      else
+        echo "File $maplist not found."
+        echo "Generating new maplist file in $maplist!"
+        touch $maplist
+        echo /Game/DNL/Maps/CapeOfSacredPath/DNL_ALL> $maplist
+        echo /Game/TheShard/Maps/TheShard>> $maplist
+    fi
+  </post_install>
+  <configuration_files>
+    <file description="Server Configurations">DNL/Saved/Config/WindowsServer/GameUserSettings.ini</file>
+    <file description="Advanced Modifications">DNL/Saved/Config/WindowsServer/Game.ini</file>
+  </configuration_files>
+</game_config>
